@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Router</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        nav a { margin-right: 15px; text-decoration: none; color: blue; }
+        nav a:hover { text-decoration: underline; }
+        #app { margin-top: 20px; padding: 15px; border: 1px solid #ccc; }
+    </style>
+        <style>
+    
+.sidebar {
+  width: 350px;
+  background: #333;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: transform 0.3s ease;
+  max-height: 100dvh;     /* Limits the menu height to 100% of the viewport height */
+  overflow-y: auto;      /* Adds a vertical scrollbar ONLY when content overflows */
+}
+
+
+.sidebar.closed {
+  transform: translateX(-350px);
+}
+
+.menu-list, .dropdown-content {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-list li a {
+  display: block;
+  padding: 15px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu-list li a:hover {
+  background: #444;
+}
+
+.dropdown-content {
+  display: none;
+  background: #222;
+  padding-left: 15px;
+}
+
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+.toggle-btn {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  z-index: 10;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+    
+    </style>
+        <script src="pages/about/script.js" defer></script>
+        <script src="pages/counter/script.js" defer></script>
+        
+</head>
+<body>
+
+  <button id="toggle-btn" class="toggle-btn">☰ Toggle</button>
+<nav id="sidebar" class="sidebar">
+  <ul class="menu-list">
+    <li><a href="#">Home page with search and search results</a></li>
+
+    <li class="dropdown">
+      <a href="#" class="drop-btn">Item page &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#/">Item group - all services</a></li>
+        <li><a href="#/about">Item page - estimate and purchase of a service</a></li>
+<li><a href="#/contact">Item group - all IP</a></li>
+<li><a href="#/counter">Item page - purchase of IP</a></li>
+        <li><a href="#">Item page - estimate and contact for a large project</a></li>
+        <li><a href="#">Item group - all <!doctype html></html>large projects</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">Default reference for items and item groups &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Item page for a service</a></li>
+        <li><a href="#">Item groups in menu format for services</a></li>
+        <li><a href="#">Item page for a large project</a></li>
+        <li><a href="#">Item page for IP</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">Itemized lists &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Cart</a></li>
+        <li><a href="#">Checkout</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Order itemized</a></li>
+        <li><a href="#">Receipts</a></li>
+        <li><a href="#">Receipt itemized</a></li>
+        <li><a href="#">Subscriptions</a></li>
+        <li><a href="#">Subscription details</a></li>
+        <li><a href="#">Shipment information</a></li>
+        <li><a href="#">Detailed documents describing estimates or proposals for contract work for large scale projects</a></li>
+        <li><a href="#">Contract documents itemized</a></li>
+        <li><a href="#">Detailed documents describing the sale of intellectual property</a></li>
+        <li><a href="#">Intellectual property documents itemized</a></li>
+        <li><a href="#">Detailed documents describing estimates of a service</a></li>
+        <li><a href="#">Service estimate documents itemized</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">Site settings &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Language</a></li>
+        <li><a href="#">Currency</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">Writing or descriptive pages &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Investors</a></li>
+<li><a href="#">Careers</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Upload your service, IP or large project</a></li>
+<li><a href="#">Resources</a></li>
+        <li><a href="#">Anti discrimination</a></li>
+        <li><a href="#">Get help with a safety issue</a></li>
+<li><a href="#">Help topics with search</a></li>
+        <li><a href="#">Refer</a></li>
+        <li><a href="#">About {company name}</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">{User first name} &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Edit account and settings</a></li>
+        <li><a href="#">Lists - public items</a></li>
+        <li><a href="#">Item groups and items editable with private authorization from the user</a></li>
+        
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">Messages and chat &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Support chat</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+    </li>
+<li class="dropdown">
+      <a href="#" class="drop-btn">Site error &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">404</a></li>
+        <li><a href="#">Error page</a></li>
+        <li><a href="#">Redirect to 404</a></li>
+      </ul>
+    </li>
+<li class="dropdown">
+      <a href="#" class="drop-btn">Authentication sequences &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">User sign up</a></li>
+        <li><a href="#">User log in to site exposure</a></li>
+        <li><a href="#">Log in with multi factor authentication with options for email, authenticator application or SMS</a></li>
+        <li><a href="#">Google federated sign in</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">Module Federation outgoing objects &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Buttons</a></li>
+        <li><a href="#">Inputs</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">Numeric formatting &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Currency types</a></li>
+        <li><a href="#">Current time</a></li>
+        <li><a href="#">DateTime</a></li>
+        <li><a href="#">Phone numbers</a></li>
+      </ul>
+    </li>
+        <li class="dropdown">
+      <a href="#" class="drop-btn">Common libraries &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Languages</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">React Router &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Clear search parameters</a></li>
+        <li><a href="#">DeleteParamsIdNavigate</a></li>
+        <li><a href="#">DeleteParamsIdRedirect</a></li>
+        <li><a href="#">Error page</a></li>
+        <li><a href="#">GetURLValues</a></li>
+        <li><a href="#">Index page</a></li>
+        <li><a href="#">LoadPageDeferData</a></li>
+        <li><a href="#">NavigateRedirect</a></li>
+        <li><a href="#">Navigation menu</a></li>
+        <li><a href="#">NavLinkHighlight</a></li>
+        <li><a href="#">NoIdentificationMatch</a></li>
+        <li><a href="#">NoMatch</a></li>
+        <li><a href="#">Page loading</a></li>
+        <li><a href="#">Pages list</a></li>
+        <li><a href="#">RetrieveURLValue</a></li>
+        <li><a href="#">RootPage</a></li>
+        <li><a href="#">Router</a></li>
+        <li><a href="#">RouterURLIdentificatioh</a></li>
+        <li><a href="#">SearchParameters</a></li>
+      </ul>
+    </li>
+<li class="dropdown">
+      <a href="#" class="drop-btn">APIs &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Payment Request API</a></li>
+        <li><a href="#">OpenSearch API</a></li>
+        <li><a href="#">USPS</a></li>
+        <li><a href="#">Google Maps</a></li>
+        <li><a href="#">AWS OpenSearch</a></li>
+        <li><a href="#">AWS Cognito</a></li>
+        <li><a href="#">AWS Predictions API</a></li>
+        <li><a href="#">AWS Simple Notification Service</a></li>
+        <li><a href="#">AWS Simple Email Service</a></li>
+        <li><a href="#">SAS</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">Application functions &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">UUID</a></li>
+        <li><a href="#">Geolocation</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">Server queries &#9662;</a>
+      <ul class="dropdown-content">
+<li><a href="#">List - users from Cognito</a></li>
+<li><a href="#">GraphQL queries - all</a></li>
+        <li><a href="#">GraphQL list of items</a></li>
+        <li><a href="#">Get photo or file from S3</a></li>
+<li><a href="#">Create file links from S3 bucket</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">CSS clamp() for minimum (mobile), preferred (scaling) and maximum (desktop) screen sizing</a>
+    </li>
+<li class="dropdown">
+      <a href="#" class="drop-btn">HTML elements &#9662;</a>
+      <ul class="dropdown-content">
+        <li><a href="#">List - all inputs</a></li>
+        <li><a href="#">Buttons</a></li>
+        <li><a href="#">Logo or logomark sizes</a></li>
+        <li><a href="#">List - cards</a></li>
+        <li><a href="#">List - unordered list with icons</a></li>
+        <li><a href="#">List - icons</a></li>
+        <li><a href="#">List - all typography elements</a></li>
+        <li><a href="#">All forms with validation</a></li>
+        <li><a href="#">HTML attributes for all HTML elements</a></li>
+        <li><a href="#">Navigation elements</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">State &#9662;</a>
+      <ul class="dropdown-content">
+<li><a href="#">alertDisplayBoolean</a></li>
+<li><a href="#">checkValueBoolean</a></li>
+        <li><a href="#">floatValueFloat</a></li>
+        <li><a href="#">imageString</a></li>
+<li><a href="#">intValueInt</a></li>
+<li><a href="#">isDisabledBoolean</a></li>
+<li><a href="#">isLoadingBoolean</a></li>
+        <li><a href="#">isOnBoolean</a></li>
+        <li><a href="#">isTextValueVisibleBoolean</a></li>
+<li><a href="#">isVisibleBoolean</a></li>
+<li><a href="#">itemIdentificationInt</a></li>
+        <li><a href="#">radioValueString</a></li>
+<li><a href="#">selectValueString</a></li>
+<li><a href="#">textValueString</a></li>
+<li><a href="#">userIsActiveBoolean</a></li>
+        <li><a href="#">userString</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+          <a href="#" class="drop-btn">Session management &#9662;</a>
+          <ul class="dropdown-content">
+            <li><a href="#">Example text</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="drop-btn">Web APIs &#9662;</a>
+          <ul class="dropdown-content">
+            <li><a href="#">Payment Request API</a></li>
+            <li><a href="#">Example text</a></li>
+          </ul>
+        </li>
+  </ul>
+</nav>
+
+    <!-- The container where dynamic HTML content will be imported -->
+    <div id="app">Loading...</div>
+
+<script>
+  const toggleBtn = document.getElementById('toggle-btn');
+const sidebar = document.getElementById('sidebar');
+//const dropdownToggle = document.querySelector('.drop-btn');
+
+// 1. Check localStorage on page load to restore previous state
+        const sidebarState = localStorage.getItem('sidebarState');
+        
+        if (sidebarState === 'closed') {
+            sidebar.classList.add('closed');
+        }
+
+const dropdowns = document.querySelectorAll('.dropdown');
+
+
+toggleBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('closed');
+  
+  // 3. Save the new state to localStorage
+            if (sidebar.classList.contains('closed')) {
+                localStorage.setItem('sidebarState', 'closed');
+            } else {
+                localStorage.setItem('sidebarState', 'open');
+            }
+});
+
+/*
+dropdownToggle.addEventListener('click', (e) => {
+  e.preventDefault();
+  dropdownToggle.parentElement.classList.toggle('active');
+});
+*/
+
+
+// Toggle dropdowns on mobile click
+dropdowns.forEach(dropdown => {
+  const dropBtn = dropdown.querySelector('.drop-btn');
+  dropBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      dropdown.classList.toggle('active');
+  });
+});
+
+</script>
+    <script>
+        // Define your routes and the corresponding HTML file paths
+        const routes = {
+            '/': 'pages/home/home.html',
+            '/about': 'pages/about/about.html',
+            '/contact': 'pages/contact/contact.html',
+            '/counter': 'pages/counter/counter.html',
+            '/404': 'pages/404/404.html'
+        };
+
+        // Function to load the page content
+        async function router() {
+            const appDiv = document.getElementById('app');
+            
+            // Get the current hash path (e.g., "#/about" -> "/about")
+            // Default to '/' if the hash is empty
+            let path = window.location.hash.slice(1) || '/';
+            
+            // Find the matching page template, fallback to 404 if not found
+            const pageUrl = routes[path] || routes['/404'];
+
+            try {
+                const response = await fetch(pageUrl);
+                if (!response.ok) {
+                    throw new Error(`Failed to load page: ${response.status}`);
+                }
+                const html = await response.text();
+                
+                // Inject the external HTML into the app container
+                appDiv.innerHTML = html;
+            } catch (error) {
+                console.error(error);
+                appDiv.innerHTML = '<h2>Error loading page</h2><p>Please try again later.</p>';
+            }
+        }
+
+        // Listen for route changes
+        window.addEventListener('hashchange', router);
+
+        // Run the router on initial page load
+        window.addEventListener('DOMContentLoaded', router);
+    </script>
+</body>
+      </html>
+      
